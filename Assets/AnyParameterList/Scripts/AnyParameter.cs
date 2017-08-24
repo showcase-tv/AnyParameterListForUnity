@@ -121,13 +121,13 @@ namespace APL {
 
 		public void Setup(AnyParameterList parent) {
 			this.parent = parent;
-			hideFlags = HideFlags.HideInInspector;
+			hideFlags = HideFlags.HideInInspector | HideFlags.HideInHierarchy;
 		}
 
 		void OnValidate() {
 			//Debug.Log ("OnValidate called.");
 			CleanReferences ();
-			hideFlags = HideFlags.HideInInspector;
+			hideFlags = HideFlags.HideInInspector | HideFlags.HideInHierarchy;
 		}
 
 		void CleanReferences() {

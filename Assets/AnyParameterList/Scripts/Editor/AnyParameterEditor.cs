@@ -39,8 +39,8 @@ public class AnyParameterEditor : Editor {
 			// start modifying
 			serializedObject.Update();
 
-			////// for debug
-			EditorGUILayout.PropertyField (serializedObject.FindProperty ("parent"));
+			////// show parent for debug purpose only
+			//EditorGUILayout.PropertyField (serializedObject.FindProperty ("parent"));
 
 			// Type GUI
 			DrawTypeNameField ();

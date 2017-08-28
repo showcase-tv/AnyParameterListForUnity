@@ -141,19 +141,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a332f90ded344d99e42c025ac0b009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
-  id: 67616d654f626a656374526566
-  typeName: 556e697479456e67696e652e47616d654f626a656374
-  comment: 41207265666572656e636520706172616d65746572206f662047616d654f626a656374
-  boolValue: 0
-  intValue: 0
-  stringValue: 
-  doubleValue: 0
-  vector2Value: {x: 0, y: 0}
-  vector3Value: {x: 0, y: 0, z: 0}
-  vector4Value: {x: 0, y: 0, z: 0, w: 0}
-  quaternionValue: {x: 0, y: 0, z: 0, w: 0}
-  objectValue: {fileID: 1956058181}
+  _parent: {fileID: 0}
+  _id: 67616d654f626a656374526566
+  _typeName: 556e697479456e67696e652e47616d654f626a656374
+  _comment: 41207265666572656e636520706172616d65746572206f662047616d654f626a656374
+  _boolValue: 0
+  _intValue: 0
+  _stringValue: 
+  _doubleValue: 0
+  _vector2Value: {x: 0, y: 0}
+  _vector3Value: {x: 0, y: 0, z: 0}
+  _vector4Value: {x: 0, y: 0, z: 0, w: 0}
+  _quaternionValue: {x: 0, y: 0, z: 0, w: 0}
+  _objectValue: {fileID: 1956058181}
 --- !u!114 &776656694
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -165,19 +165,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a332f90ded344d99e42c025ac0b009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
-  id: 7469746c65
-  typeName: 53797374656d2e537472696e67
-  comment: 412073746972696e6720706172616d65746572
-  boolValue: 0
-  intValue: 0
-  stringValue: 536f6d655469746c65
-  doubleValue: 0
-  vector2Value: {x: 0, y: 0}
-  vector3Value: {x: 0, y: 0, z: 0}
-  vector4Value: {x: 0, y: 0, z: 0, w: 0}
-  quaternionValue: {x: 0, y: 0, z: 0, w: 0}
-  objectValue: {fileID: 0}
+  _parent: {fileID: 0}
+  _id: 7469746c65
+  _typeName: 53797374656d2e537472696e67
+  _comment: 412073746972696e6720706172616d65746572
+  _boolValue: 0
+  _intValue: 0
+  _stringValue: 536f6d655469746c65
+  _doubleValue: 0
+  _vector2Value: {x: 0, y: 0}
+  _vector3Value: {x: 0, y: 0, z: 0}
+  _vector4Value: {x: 0, y: 0, z: 0, w: 0}
+  _quaternionValue: {x: 0, y: 0, z: 0, w: 0}
+  _objectValue: {fileID: 0}
 --- !u!114 &776656695
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -189,19 +189,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c984d299dc3f400fabff841d9364a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 776656700}
-  id: gameObjectRef
-  typeName: UnityEngine.GameObject
-  comment: a reference parameter to a game object
-  boolValue: 0
-  intValue: 0
-  stringValue: 
-  doubleValue: 0
-  vector2Value: {x: 0, y: 0}
-  vector3Value: {x: 0, y: 0, z: 0}
-  vector4Value: {x: 0, y: 0, z: 0, w: 0}
-  quaternionValue: {x: 0, y: 0, z: 0, w: 0}
-  objectValue: {fileID: 1956058181}
+  _parent: {fileID: 776656700}
+  _id: gameObjectRef
+  _typeName: UnityEngine.GameObject
+  _comment: a reference parameter to a game object
+  _boolValue: 0
+  _intValue: 0
+  _stringValue: 
+  _doubleValue: 0
+  _vector2Value: {x: 0, y: 0}
+  _vector3Value: {x: 0, y: 0, z: 0}
+  _vector4Value: {x: 0, y: 0, z: 0, w: 0}
+  _quaternionValue: {x: 0, y: 0, z: 0, w: 0}
+  _objectValue: {fileID: 1956058181}
 --- !u!4 &776656696
 Transform:
   m_ObjectHideFlags: 0
@@ -226,19 +226,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a332f90ded344d99e42c025ac0b009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
-  id: 666c6167
-  typeName: 53797374656d2e426f6f6c65616e
-  comment: 4120626f6f6c65616e20706172616d65746572
-  boolValue: 1
-  intValue: 0
-  stringValue: 
-  doubleValue: 0
-  vector2Value: {x: 0, y: 0}
-  vector3Value: {x: 0, y: 0, z: 0}
-  vector4Value: {x: 0, y: 0, z: 0, w: 0}
-  quaternionValue: {x: 0, y: 0, z: 0, w: 0}
-  objectValue: {fileID: 0}
+  _parent: {fileID: 0}
+  _id: 666c6167
+  _typeName: 53797374656d2e426f6f6c65616e
+  _comment: 4120626f6f6c65616e20706172616d65746572
+  _boolValue: 1
+  _intValue: 0
+  _stringValue: 
+  _doubleValue: 0
+  _vector2Value: {x: 0, y: 0}
+  _vector3Value: {x: 0, y: 0, z: 0}
+  _vector4Value: {x: 0, y: 0, z: 0, w: 0}
+  _quaternionValue: {x: 0, y: 0, z: 0, w: 0}
+  _objectValue: {fileID: 0}
 --- !u!114 &776656698
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -250,19 +250,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c984d299dc3f400fabff841d9364a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 776656700}
-  id: flag
-  typeName: System.Boolean
-  comment: a boolean parameter
-  boolValue: 1
-  intValue: 0
-  stringValue: 
-  doubleValue: 0
-  vector2Value: {x: 0, y: 0}
-  vector3Value: {x: 0, y: 0, z: 0}
-  vector4Value: {x: 0, y: 0, z: 0, w: 0}
-  quaternionValue: {x: 0, y: 0, z: 0, w: 0}
-  objectValue: {fileID: 0}
+  _parent: {fileID: 776656700}
+  _id: flag
+  _typeName: System.Boolean
+  _comment: a boolean parameter
+  _boolValue: 1
+  _intValue: 0
+  _stringValue: 
+  _doubleValue: 0
+  _vector2Value: {x: 0, y: 0}
+  _vector3Value: {x: 0, y: 0, z: 0}
+  _vector4Value: {x: 0, y: 0, z: 0, w: 0}
+  _quaternionValue: {x: 0, y: 0, z: 0, w: 0}
+  _objectValue: {fileID: 0}
 --- !u!114 &776656699
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -274,19 +274,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c984d299dc3f400fabff841d9364a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 776656700}
-  id: title
-  typeName: System.String
-  comment: a string parameter
-  boolValue: 0
-  intValue: 0
-  stringValue: SimpleSample
-  doubleValue: 0
-  vector2Value: {x: 0, y: 0}
-  vector3Value: {x: 0, y: 0, z: 0}
-  vector4Value: {x: 0, y: 0, z: 0, w: 0}
-  quaternionValue: {x: 0, y: 0, z: 0, w: 0}
-  objectValue: {fileID: 0}
+  _parent: {fileID: 776656700}
+  _id: title
+  _typeName: System.String
+  _comment: a string parameter
+  _boolValue: 0
+  _intValue: 0
+  _stringValue: SimpleSample
+  _doubleValue: 0
+  _vector2Value: {x: 0, y: 0}
+  _vector3Value: {x: 0, y: 0, z: 0}
+  _vector4Value: {x: 0, y: 0, z: 0, w: 0}
+  _quaternionValue: {x: 0, y: 0, z: 0, w: 0}
+  _objectValue: {fileID: 0}
 --- !u!114 &776656700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,11 +298,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb34804e5823e4f5189dde7877720f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameters:
+  _parameters:
   - {fileID: 776656699}
   - {fileID: 776656698}
   - {fileID: 776656695}
-  comment: sample parameters
+  _comment: sample parameters
 --- !u!1 &988409529
 GameObject:
   m_ObjectHideFlags: 0

@@ -51,30 +51,30 @@ namespace APL {
 		}
 
 		[SerializeField]
-		AnyParameterList parent; // 親を覚えておく
+		private AnyParameterList _parent; // 親を覚えておく
 
 		public AnyParameterList Parent {
 			get {
-				return parent;
+				return _parent;
 			}
 			set {
-				this.parent = value;
+				this._parent = value;
 			}
 		}
 
-		public System.Type majorType {
+		public System.Type MajorType {
 			get {
-				if (typeName != null && TypeInfoTable.ContainsKey (typeName)) {
-					return TypeInfoTable [typeName].majorType;
+				if (_typeName != null && TypeInfoTable.ContainsKey (_typeName)) {
+					return TypeInfoTable [_typeName].majorType;
 				}
 				return null;
 			}
 		}
 
-		public System.Type minorType {
+		public System.Type MinorType {
 			get {
-				if (typeName != null && TypeInfoTable.ContainsKey (typeName)) {
-					var info = TypeInfoTable [typeName];
+				if (_typeName != null && TypeInfoTable.ContainsKey (_typeName)) {
+					var info = TypeInfoTable [_typeName];
 					if (info.minorType != null) {
 						return info.minorType;
 					}
@@ -85,42 +85,93 @@ namespace APL {
 		}
 
 		[SerializeField]
-		public string id;
+		private string _id;
+		public string Id {
+			get { return _id; }
+			set { _id = value; }
+		}
 
 		[SerializeField]
-		public string typeName;
+		private string _typeName;
+		public string TypeName {
+			get { return _typeName; }
+			set { _typeName = value; }
+		}
 
 		[SerializeField, TextArea(1,10)]
-		public string comment;
+		private string _comment;
+		public string Comment {
+			get { return _comment; }
+			set { _comment = value; }
+		}
 
 		// values
 		[SerializeField]
-		public bool boolValue;
+		public bool _boolValue;
+		public bool BoolValue {
+			get { return _boolValue; }
+			set { _boolValue = value; }
+		}
 
 		[SerializeField]
-		public int intValue;
+		public int _intValue;
+		public int IntValue {
+			get { return _intValue; }
+			set { _intValue = value; }
+		}
 
 		[SerializeField]
-		private string stringValue;
+		private string _stringValue;
+		public string StringValue {
+			get { return _stringValue; }
+			set { _stringValue = value; }
+		}
 
 		[SerializeField]
-		public double doubleValue;
+		public double _doubleValue;
+		public double DoubleValue {
+			get { return _doubleValue; }
+			set { _doubleValue = value; }
+		}
 
 		[SerializeField]
-		public Vector2 vector2Value;
-		[SerializeField]
-		public Vector3 vector3Value;
-		[SerializeField]
-		public Vector4 vector4Value;
-		[SerializeField]
-		public Quaternion quaternionValue;
+		public Vector2 _vector2Value;
+		public Vector2 Vector2Value {
+			get { return _vector2Value; }
+			set { _vector2Value = value; }
+		}
 
 		[SerializeField]
-		public UnityEngine.Object objectValue;
+		public Vector3 _vector3Value;
+		public Vector3 Vector3Value {
+			get { return _vector3Value; }
+			set { _vector3Value = value; }
+		}
+
+		[SerializeField]
+		public Vector4 _vector4Value;
+		public Vector4 Vector4Value {
+			get { return _vector4Value; }
+			set { _vector4Value = value; }
+		}
+
+		[SerializeField]
+		public Quaternion _quaternionValue;
+		public Quaternion QuaternionValue {
+			get { return _quaternionValue; }
+			set { _quaternionValue = value; }
+		}
+
+		[SerializeField]
+		public UnityEngine.Object _objectValue;
+		public UnityEngine.Object ObjectValue {
+			get { return _objectValue; }
+			set { _objectValue = value; }
+		}
 
 
 		public void Setup(AnyParameterList parent) {
-			this.parent = parent;
+			this._parent = parent;
 			hideFlags = HideFlags.HideInInspector | HideFlags.HideInHierarchy;
 		}
 
@@ -131,36 +182,36 @@ namespace APL {
 		}
 
 		void CleanReferences() {
-			if (majorType != typeof(UnityEngine.Object)) {
-				objectValue = null;
+			if (MajorType != typeof(UnityEngine.Object)) {
+				_objectValue = null;
 			}
 		}
 
 		public override int GetHashCode() {
-			return id.GetHashCode () ^ typeName.GetHashCode ();
+			return _id.GetHashCode () ^ _typeName.GetHashCode ();
 		}
 
 		public AnyParameter CloneToParent(AnyParameterList paramList) {
 			var newParam = paramList.gameObject.AddComponent<AnyParameter> ();
 			newParam.Setup (paramList);
-			newParam.id = id;
-			newParam.typeName = typeName;
-			newParam.comment = comment;
+			newParam.Id = _id;
+			newParam._typeName = _typeName;
+			newParam._comment = _comment;
 			// copy values
-			newParam.boolValue = boolValue;
-			newParam.intValue = intValue;
-			newParam.stringValue = stringValue;
-			newParam.doubleValue = doubleValue;
-			newParam.vector2Value = vector2Value;
-			newParam.vector3Value = vector3Value;
-			newParam.vector4Value = vector4Value;
-			newParam.quaternionValue = quaternionValue;
-			newParam.objectValue = objectValue;
+			newParam.BoolValue = _boolValue;
+			newParam.IntValue = _intValue;
+			newParam.StringValue = _stringValue;
+			newParam.DoubleValue = _doubleValue;
+			newParam.Vector2Value = _vector2Value;
+			newParam.Vector3Value = _vector3Value;
+			newParam.Vector4Value = _vector4Value;
+			newParam.QuaternionValue = _quaternionValue;
+			newParam.ObjectValue = _objectValue;
 			return newParam;
 		}
 
 		public string Title {
-			get { return "" + id + " (" + typeName + ")"; }
+			get { return "" + _id + " (" + _typeName + ")"; }
 		}
 	}
 } // namespace APL

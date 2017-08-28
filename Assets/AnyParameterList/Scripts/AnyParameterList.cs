@@ -5,7 +5,7 @@ using UnityEngine;
 /*
  * Features:
  *  - copy AnyParameterList component without problems.
- *  - support undo in editor, including adding/deleting parameters.
+ *  - support undo in editor, including adding/deleting _parameters.
  *  - scene/AssetBundle serialization ready.
  * 
  * Known Problem:
@@ -16,7 +16,7 @@ using UnityEngine;
  *  - add more parameter types.
  *  - avoid public variables.
  *  - cleaner inspector UI
- *
+ *  - better API to get values
  */
 
 namespace APL {
@@ -24,26 +24,31 @@ namespace APL {
 	public class AnyParameterList : MonoBehaviour {
 
 		[SerializeField]
-		private List<AnyParameter> parameters = new List<AnyParameter> ();
+		private List<AnyParameter> _parameters = new List<AnyParameter> ();
 
 		[SerializeField, TextArea(1,10)]
-		public string comment;
+		private string _comment;
+
+		public string Comment {
+			get { return _comment; }
+			set { _comment = value; }
+		}
 
 		public List<AnyParameter> Parameters {
-			get { return parameters; }
+			get { return _parameters; }
 		}
 
 		public int Count {
-			get { return parameters.Count; }
+			get { return _parameters.Count; }
 		}
 
 		public override int GetHashCode() {
-			return base.GetHashCode() ^ parameters.GetHashCode ();
+			return base.GetHashCode() ^ _parameters.GetHashCode ();
 		}
 
 		void OnValidate() {
 			var invalidParams = new List<AnyParameter> ();
-			foreach (var param in parameters) {
+			foreach (var param in _parameters) {
 				if (param.Parent != this) {
 					// this parameter is invalid, probably because it was copies from somewhere.
 					invalidParams.Add(param);
@@ -58,8 +63,8 @@ namespace APL {
 		// replace invalid parameter with cloned instance.
 		void RenewParameter(AnyParameter param) {
 			
-			int index = parameters.IndexOf(param);
-			parameters.RemoveAt (index);
+			int index = _parameters.IndexOf(param);
+			_parameters.RemoveAt (index);
 			var newParam = param.CloneToParent (this);
 			Parameters.Insert (index, newParam);
 		}
@@ -67,17 +72,17 @@ namespace APL {
 		public AnyParameter AddParameter() {
 			var param = this.gameObject.AddComponent<AnyParameter> ();
 			param.Setup (this);
-			parameters.Add (param);
+			_parameters.Add (param);
 			return param;
 		}
 
 		public void DeleteParameter(AnyParameter param) {
-			var index = parameters.IndexOf (param);
+			var index = _parameters.IndexOf (param);
 			if (index < 0) {
-				Debug.LogError ("DeleteParameter(): param<"+param.id+"> not found in AnyParameterList.");
+				Debug.LogError ("DeleteParameter(): param<"+param.Id+"> not found in AnyParameterList.");
 				return;
 			}
-			parameters.Remove (param);
+			_parameters.Remove (param);
 			GameObject.DestroyImmediate (param);
 		}
 	}

@@ -52,19 +52,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c984d299dc3f400fabff841d9364a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 114678683910338788}
-  id: title
-  typeName: System.String
-  comment: 
-  boolValue: 0
-  intValue: 0
-  stringValue: Some Prefabs
-  doubleValue: 0
-  vector2Value: {x: 0, y: 0}
-  vector3Value: {x: 0, y: 0, z: 0}
-  vector4Value: {x: 0, y: 0, z: 0, w: 0}
-  quaternionValue: {x: 0, y: 0, z: 0, w: 0}
-  objectValue: {fileID: 0}
+  _parent: {fileID: 114678683910338788}
+  _id: title
+  _typeName: System.String
+  _comment: 
+  _boolValue: 0
+  _intValue: 0
+  _stringValue: Some Prefabs
+  _doubleValue: 0
+  _vector2Value: {x: 0, y: 0}
+  _vector3Value: {x: 0, y: 0, z: 0}
+  _vector4Value: {x: 0, y: 0, z: 0, w: 0}
+  _quaternionValue: {x: 0, y: 0, z: 0, w: 0}
+  _objectValue: {fileID: 0}
 --- !u!114 &114678683910338788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76,6 +76,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb34804e5823e4f5189dde7877720f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameters:
+  _parameters:
   - {fileID: 114569015902346616}
-  comment: 
+  _comment: 

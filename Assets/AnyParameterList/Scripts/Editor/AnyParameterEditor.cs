@@ -12,16 +12,17 @@ public class AnyParameterEditor : Editor {
 		Delete,
 	};
 
-	private AnyParameter param;
-	private bool foldout = true;
-	private GUIStyle style;
-	public delegate void OnParameterAction(AnyParameter param, Action action);
-	public OnParameterAction OnParameterEvent;
+	private AnyParameter _param;
+	private bool _foldout = true;
+	private GUIStyle _style;
+
+	public delegate void OnParameterAction(AnyParameter _param, Action action);
+	public event OnParameterAction OnParameterEvent;
 
 	void OnEnable() {
-		style = new GUIStyle (EditorStyles.foldout);
-		style.fontStyle = FontStyle.Bold;
-		param = (AnyParameter)target;
+		_style = new GUIStyle (EditorStyles.foldout);
+		_style.fontStyle = FontStyle.Bold;
+		_param = (AnyParameter)target;
 	}
 
 	public void OnInspectorGUIWithParent(AnyParameterListEditor parent) {
@@ -32,42 +33,42 @@ public class AnyParameterEditor : Editor {
 	{
 		
 		GUILayout.BeginHorizontal ();
-		foldout = EditorGUILayout.Foldout(foldout, param.Title, true, style);
+		_foldout = EditorGUILayout.Foldout(_foldout, _param.Title, true, _style);
 		DrawActionButton ();
 		GUILayout.EndHorizontal ();
-		if (foldout) {
+		if (_foldout) {
 			// start modifying
 			serializedObject.Update();
 
 			////// show parent for debug purpose only
 			//EditorGUILayout.PropertyField (serializedObject.FindProperty ("parent"));
-
+	
 			// Type GUI
 			DrawTypeNameField ();
 
 			// Id GUI
-			EditorGUILayout.PropertyField (serializedObject.FindProperty ("id"));
+			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_id"));
 
 			// Value GUI
-			if (param.majorType != null) {
+			if (_param.MajorType != null) {
 				DrawValueField ();
 			}
 
 			// comment GUI
-			EditorGUILayout.PropertyField (serializedObject.FindProperty ("comment"));
+			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_comment"));
 			// apply to object
 			serializedObject.ApplyModifiedProperties();
 		}
 	}
 
 	void DrawTypeNameField() {
-		var typeNameProperty = serializedObject.FindProperty ("typeName");
+		var typeNameProperty = serializedObject.FindProperty ("_typeName");
 		var typeKeys = AnyParameter.TypeKeys;
 		int selected = System.Array.IndexOf(typeKeys, typeNameProperty.stringValue);
 		selected = EditorGUILayout.Popup("Type", selected, typeKeys);
 		if (selected >= 0) {
 			if (typeNameProperty.stringValue != typeKeys [selected]) {
-				Undo.RecordObject (param, "Change TypeName");
+				Undo.RecordObject (_param, "Change TypeName");
 				typeNameProperty.stringValue = typeKeys [selected];
 			}
 		}
@@ -76,45 +77,45 @@ public class AnyParameterEditor : Editor {
 	void DrawValueField() {
 		var label = new GUIContent ("Value");
 
-		switch (param.majorType.ToString()) {
+		switch (_param.MajorType.ToString()) {
 		case "System.Boolean":
-			EditorGUILayout.PropertyField (serializedObject.FindProperty ("boolValue"), label);
+			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_boolValue"), label);
 			break;
 		case "System.Int32":
-			EditorGUILayout.PropertyField (serializedObject.FindProperty ("intValue"), label);
+			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_intValue"), label);
 			break;
 		case "System.String":
-			EditorGUILayout.PropertyField (serializedObject.FindProperty ("stringValue"), label);
+			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_stringValue"), label);
 			break;
 		case "System.Double":
-			EditorGUILayout.PropertyField (serializedObject.FindProperty ("doubleValue"), label);
+			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_doubleValue"), label);
 			break;
 		case "UnityEngine.Vector2":
-			EditorGUILayout.PropertyField (serializedObject.FindProperty ("vector2Value"), label);
+			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_vector2Value"), label);
 			break;
 		case "UnityEngine.Vector3":
-			EditorGUILayout.PropertyField (serializedObject.FindProperty ("vector3Value"), label);
+			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_vector3Value"), label);
 			break;
 		case "UnityEngine.Vector4":
-			EditorGUILayout.PropertyField (serializedObject.FindProperty ("vector4Value"), label);
+			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_vector4Value"), label);
 			break;
 		case "UnityEngine.Quaternion":
-			EditorGUILayout.PropertyField (serializedObject.FindProperty ("quaternionValue"), label);
+			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_quaternionValue"), label);
 			break;
 		case "UnityEngine.Object":
-			GenericObjectField(param);
-			//EditorGUILayout.ObjectField (serializedObject.FindProperty ("objectValue"), param.minorType);
+			GenericObjectField(_param);
+			//EditorGUILayout.ObjectField (serializedObject.FindProperty ("objectValue"), _param.minorType);
 			break;
 		}
 	}
 
-	void GenericObjectField(AnyParameter param)
+	static void GenericObjectField(AnyParameter param)
 	{
-		Object currentValue = param.objectValue;
-		var edited = EditorGUILayout.ObjectField ("Value", currentValue, param.minorType, true);
+		Object currentValue = param.ObjectValue;
+		var edited = EditorGUILayout.ObjectField ("Value", currentValue, param.MinorType, true);
 		if (currentValue != edited) {
-			Undo.RecordObject (param, "Change "+param.minorType+" Value");
-			param.objectValue = edited;
+			Undo.RecordObject (param, "Change "+param.MinorType+" Value");
+			param.ObjectValue = edited;
 		}
 	}
 
@@ -129,7 +130,7 @@ public class AnyParameterEditor : Editor {
 		if  (selected > 0) {
 			var action = ConvertPopupSelectionToAction(selected);
 			if (OnParameterEvent != null) {
-				OnParameterEvent (param, action);
+				OnParameterEvent (_param, action);
 			}
 		}
 	}

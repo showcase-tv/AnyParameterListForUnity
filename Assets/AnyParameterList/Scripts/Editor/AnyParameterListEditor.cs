@@ -7,22 +7,22 @@ using APL;
 [CustomEditor(typeof(APL.AnyParameterList))]
 public class AnyParameterListEditor : Editor {
 
-	private AnyParameterList parameterList;
-	private List<Editor> editors = new List<Editor> ();
-	private AnyParameter paramToDelete = null;
-	private AnyParameter paramToMoveUp = null;
-	private AnyParameter paramToMoveDown = null;
+	private AnyParameterList _parameterList;
+	private List<Editor> _editors = new List<Editor> ();
+	private AnyParameter _paramToDelete = null;
+	private AnyParameter _paramToMoveUp = null;
+	private AnyParameter _paramToMoveDown = null;
 
 	void OnEnable() {
-		parameterList = (AnyParameterList)target;
+		_parameterList = (AnyParameterList)target;
 	}
 
 	void OnDestroy() {
 		//Debug.Log ("AnyParameterListEditor:OnDestroy called.");
-		foreach (var editor in editors) {
+		foreach (var editor in _editors) {
 			Object.DestroyImmediate (editor);
 		}
-		editors.Clear ();
+		_editors.Clear ();
 	}
 
 	void UpdateParameterEditors() {
@@ -32,11 +32,11 @@ public class AnyParameterListEditor : Editor {
 	}
 
 	void CreateNeededEditors() {
-		foreach (var param in parameterList.Parameters) {
+		foreach (var param in _parameterList.Parameters) {
 			var editor = EditorForParameter (param);
 			if (editor == null) {
 				//Debug.Log ("editor for parameter:"+param.Title+" not found.");
-				editors.Add (CreateParameterEditor(param));
+				_editors.Add (CreateParameterEditor(param));
 			}
 		}
 	}
@@ -53,25 +53,25 @@ public class AnyParameterListEditor : Editor {
 	}
 
 	void RemoveUnneededEditors() {
-		// remove unneeded editors
+		// remove unneeded _editors
 		var editorsToDelete = new List<Editor> ();
-		foreach (var editor in editors) {
-			var param = parameterList.Parameters.Find (parameter => Object.ReferenceEquals (parameter, editor.target));
+		foreach (var editor in _editors) {
+			var param = _parameterList.Parameters.Find (parameter => Object.ReferenceEquals (parameter, editor.target));
 			if (param == null) {
 				editorsToDelete.Add(editor);
 			}
 		}
-		//Debug.Log ("editors.Count : " + editors.Count);
+		//Debug.Log ("_editors.Count : " + _editors.Count);
 		//Debug.Log ("editorsToDelete.Count : " + editorsToDelete.Count);
 		foreach (var editor in editorsToDelete) {
 			//Debug.Log ("removing editor for :" + editor.target + "|" + ((AnyParameter)editor.target).Title);
-			editors.Remove(editor);
+			_editors.Remove(editor);
 			Object.DestroyImmediate (editor);
 		}
 	}
 
 	Editor EditorForParameter(AnyParameter paramToFind) {
-		foreach (var editor in editors) {
+		foreach (var editor in _editors) {
 			if (Object.ReferenceEquals (editor.target, paramToFind)) {
 				return editor;
 			}
@@ -81,7 +81,7 @@ public class AnyParameterListEditor : Editor {
 
 	void DrawParametersInspectorGUI() {
 		UpdateParameterEditors ();
-		foreach(var param in parameterList.Parameters) {
+		foreach(var param in _parameterList.Parameters) {
 			var editor = (AnyParameterEditor) EditorForParameter (param);
 			EditorGUI.indentLevel += 1;
 			editor.OnInspectorGUI();
@@ -93,37 +93,37 @@ public class AnyParameterListEditor : Editor {
 	}
 
 	void DeleteRequestedParam() {
-		if (paramToDelete != null) {
-			DeleteParameterViaEditor (parameterList, paramToDelete);
-			paramToDelete = null;
+		if (_paramToDelete != null) {
+			DeleteParameterViaEditor (_parameterList, _paramToDelete);
+			_paramToDelete = null;
 		}
 	}
 
 	void MoveUpRequestedParam() {
-		if (paramToMoveUp != null) {
-			int index = parameterList.Parameters.IndexOf (paramToMoveUp);
+		if (_paramToMoveUp != null) {
+			int index = _parameterList.Parameters.IndexOf (_paramToMoveUp);
 			if (index > 0) {
-				Undo.RecordObject (parameterList, "MoveUp Parameter");
-				parameterList.Parameters.Remove (paramToMoveUp);
-				parameterList.Parameters.Insert (index - 1, paramToMoveUp);
+				Undo.RecordObject (_parameterList, "MoveUp Parameter");
+				_parameterList.Parameters.Remove (_paramToMoveUp);
+				_parameterList.Parameters.Insert (index - 1, _paramToMoveUp);
 			} else {
 				Debug.Log ("MoveUp not executable.");
 			}
-			paramToMoveUp = null;
+			_paramToMoveUp = null;
 		}
 	}
 
 	void MoveDownRequestedParam() {
-		if (paramToMoveDown != null) {
-			int index = parameterList.Parameters.IndexOf (paramToMoveDown);
-			if (index >= 0 && index < parameterList.Parameters.Count -1) {
-				Undo.RecordObject (parameterList, "MoveDown Parameter");
-				parameterList.Parameters.Remove (paramToMoveDown);
-				parameterList.Parameters.Insert (index + 1, paramToMoveDown);
+		if (_paramToMoveDown != null) {
+			int index = _parameterList.Parameters.IndexOf (_paramToMoveDown);
+			if (index >= 0 && index < _parameterList.Parameters.Count -1) {
+				Undo.RecordObject (_parameterList, "MoveDown Parameter");
+				_parameterList.Parameters.Remove (_paramToMoveDown);
+				_parameterList.Parameters.Insert (index + 1, _paramToMoveDown);
 			} else {
 				Debug.Log ("MoveDown not executable.");
 			}
-			paramToMoveDown = null;
+			_paramToMoveDown = null;
 		}
 	}
 
@@ -131,13 +131,13 @@ public class AnyParameterListEditor : Editor {
 	void OnParameterAction(AnyParameter param, AnyParameterEditor.Action action) {
 		switch (action) {
 		case AnyParameterEditor.Action.Delete:
-			paramToDelete = param;
+			_paramToDelete = param;
 			break;
 		case AnyParameterEditor.Action.MoveUp:
-			paramToMoveUp = param;
+			_paramToMoveUp = param;
 			break;
 		case AnyParameterEditor.Action.MoveDown:
-			paramToMoveDown = param;
+			_paramToMoveDown = param;
 			break;
 		}
 	}
@@ -147,7 +147,7 @@ public class AnyParameterListEditor : Editor {
 		// start modifying
 		serializedObject.Update();
 		// comment GUI
-		EditorGUILayout.PropertyField (serializedObject.FindProperty ("comment"));
+		EditorGUILayout.PropertyField (serializedObject.FindProperty ("_comment"));
 		// apply to object
 		serializedObject.ApplyModifiedProperties();
 
@@ -155,18 +155,18 @@ public class AnyParameterListEditor : Editor {
 		DrawParametersInspectorGUI();
 
 		if (GUILayout.Button ("Add New Parameter")) {
-			Undo.RecordObject(parameterList, "Add New Parameter");
-			AnyParameter newParam = parameterList.AddParameter ();
+			Undo.RecordObject(_parameterList, "Add New Parameter");
+			AnyParameter newParam = _parameterList.AddParameter ();
 			Undo.RegisterCreatedObjectUndo (newParam, "Add New Parameter");
 		}
 	}
 
 	// delete method, conforms to Undo
 	public void DeleteParameterViaEditor(AnyParameterList paramList, AnyParameter param) {
-		Undo.RecordObject(parameterList, "Delete Parameter");
+		Undo.RecordObject(_parameterList, "Delete Parameter");
 		var index = paramList.Parameters.IndexOf (param);
 		if (index < 0) {
-			Debug.LogError ("DeleteParameter(): param<"+param.id+"> not found in AnyParameterList.");
+			Debug.LogError ("DeleteParameter(): param<"+param.Id+"> not found in AnyParameterList.");
 			return;
 		}
 		paramList.Parameters.Remove (param);

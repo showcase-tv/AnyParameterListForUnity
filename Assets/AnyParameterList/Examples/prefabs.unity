@@ -225,19 +225,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c984d299dc3f400fabff841d9364a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 107156534}
-  id: title
-  typeName: System.String
-  comment: 
-  boolValue: 0
-  intValue: 0
-  stringValue: Some Prefabs
-  doubleValue: 0
-  vector2Value: {x: 0, y: 0}
-  vector3Value: {x: 0, y: 0, z: 0}
-  vector4Value: {x: 0, y: 0, z: 0, w: 0}
-  quaternionValue: {x: 0, y: 0, z: 0, w: 0}
-  objectValue: {fileID: 0}
+  _parent: {fileID: 107156534}
+  _id: title
+  _typeName: System.String
+  _comment: 
+  _boolValue: 0
+  _intValue: 0
+  _stringValue: Some Prefabs
+  _doubleValue: 0
+  _vector2Value: {x: 0, y: 0}
+  _vector3Value: {x: 0, y: 0, z: 0}
+  _vector4Value: {x: 0, y: 0, z: 0, w: 0}
+  _quaternionValue: {x: 0, y: 0, z: 0, w: 0}
+  _objectValue: {fileID: 0}
 --- !u!114 &107156534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,9 +250,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb34804e5823e4f5189dde7877720f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameters:
+  _parameters:
   - {fileID: 107156533}
-  comment: 
+  _comment: 
 --- !u!4 &107156535
 Transform:
   m_ObjectHideFlags: 0
@@ -394,19 +394,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c984d299dc3f400fabff841d9364a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 1000776384}
-  id: title
-  typeName: System.String
-  comment: 
-  boolValue: 0
-  intValue: 0
-  stringValue: Some Prefabs
-  doubleValue: 0
-  vector2Value: {x: 0, y: 0}
-  vector3Value: {x: 0, y: 0, z: 0}
-  vector4Value: {x: 0, y: 0, z: 0, w: 0}
-  quaternionValue: {x: 0, y: 0, z: 0, w: 0}
-  objectValue: {fileID: 0}
+  _parent: {fileID: 1000776384}
+  _id: title
+  _typeName: System.String
+  _comment: 
+  _boolValue: 0
+  _intValue: 0
+  _stringValue: Some Prefabs
+  _doubleValue: 0
+  _vector2Value: {x: 0, y: 0}
+  _vector3Value: {x: 0, y: 0, z: 0}
+  _vector4Value: {x: 0, y: 0, z: 0, w: 0}
+  _quaternionValue: {x: 0, y: 0, z: 0, w: 0}
+  _objectValue: {fileID: 0}
 --- !u!114 &1000776384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,9 +419,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb34804e5823e4f5189dde7877720f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameters:
+  _parameters:
   - {fileID: 1000776383}
-  comment: 
+  _comment: 
 --- !u!4 &1000776385
 Transform:
   m_ObjectHideFlags: 0
@@ -480,19 +480,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c984d299dc3f400fabff841d9364a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 1350569742}
-  id: cubeRef
-  typeName: UnityEngine.GameObject
-  comment: a reference to internal GameObject of prefab
-  boolValue: 0
-  intValue: 0
-  stringValue: 
-  doubleValue: 0
-  vector2Value: {x: 0, y: 0}
-  vector3Value: {x: 0, y: 0, z: 0}
-  vector4Value: {x: 0, y: 0, z: 0, w: 0}
-  quaternionValue: {x: 0, y: 0, z: 0, w: 0}
-  objectValue: {fileID: 18953648}
+  _parent: {fileID: 1350569742}
+  _id: cubeRef
+  _typeName: UnityEngine.GameObject
+  _comment: a reference to internal GameObject of prefab
+  _boolValue: 0
+  _intValue: 0
+  _stringValue: 
+  _doubleValue: 0
+  _vector2Value: {x: 0, y: 0}
+  _vector3Value: {x: 0, y: 0, z: 0}
+  _vector4Value: {x: 0, y: 0, z: 0, w: 0}
+  _quaternionValue: {x: 0, y: 0, z: 0, w: 0}
+  _objectValue: {fileID: 18953648}
 --- !u!114 &1350569742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,9 +505,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb34804e5823e4f5189dde7877720f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameters:
+  _parameters:
   - {fileID: 1350569741}
-  comment: 
+  _comment: 
 --- !u!1 &1493995144
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,19 +901,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c984d299dc3f400fabff841d9364a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 2035674142}
-  id: cubeRef
-  typeName: UnityEngine.GameObject
-  comment: a reference to internal GameObject of prefab
-  boolValue: 0
-  intValue: 0
-  stringValue: 
-  doubleValue: 0
-  vector2Value: {x: 0, y: 0}
-  vector3Value: {x: 0, y: 0, z: 0}
-  vector4Value: {x: 0, y: 0, z: 0, w: 0}
-  quaternionValue: {x: 0, y: 0, z: 0, w: 0}
-  objectValue: {fileID: 1718018773}
+  _parent: {fileID: 2035674142}
+  _id: cubeRef
+  _typeName: UnityEngine.GameObject
+  _comment: a reference to internal GameObject of prefab
+  _boolValue: 0
+  _intValue: 0
+  _stringValue: 
+  _doubleValue: 0
+  _vector2Value: {x: 0, y: 0}
+  _vector3Value: {x: 0, y: 0, z: 0}
+  _vector4Value: {x: 0, y: 0, z: 0, w: 0}
+  _quaternionValue: {x: 0, y: 0, z: 0, w: 0}
+  _objectValue: {fileID: 1718018773}
 --- !u!114 &2035674142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,9 +926,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb34804e5823e4f5189dde7877720f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameters:
+  _parameters:
   - {fileID: 2035674141}
-  comment: 
+  _comment: 
 --- !u!1001 &2088752073
 Prefab:
   m_ObjectHideFlags: 0

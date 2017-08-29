@@ -14,9 +14,7 @@ using UnityEngine;
  * 
  * TODO:
  *  - add more parameter types.
- *  - avoid public variables.
  *  - cleaner inspector UI
- *  - better API to get values
  */
 
 namespace APL {
@@ -84,6 +82,10 @@ namespace APL {
 			}
 			_parameters.Remove (param);
 			GameObject.DestroyImmediate (param);
+		}
+
+		public AnyParameter FindParameter(string id) {
+			return _parameters.Find (param => (param.Id == id));
 		}
 	}
 

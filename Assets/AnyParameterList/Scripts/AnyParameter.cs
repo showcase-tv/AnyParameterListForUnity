@@ -107,14 +107,14 @@ namespace APL {
 
 		// values
 		[SerializeField]
-		public bool _boolValue;
+		private bool _boolValue;
 		public bool BoolValue {
 			get { return _boolValue; }
 			set { _boolValue = value; }
 		}
 
 		[SerializeField]
-		public int _intValue;
+		private int _intValue;
 		public int IntValue {
 			get { return _intValue; }
 			set { _intValue = value; }
@@ -128,42 +128,42 @@ namespace APL {
 		}
 
 		[SerializeField]
-		public double _doubleValue;
+		private double _doubleValue;
 		public double DoubleValue {
 			get { return _doubleValue; }
 			set { _doubleValue = value; }
 		}
 
 		[SerializeField]
-		public Vector2 _vector2Value;
+		private Vector2 _vector2Value;
 		public Vector2 Vector2Value {
 			get { return _vector2Value; }
 			set { _vector2Value = value; }
 		}
 
 		[SerializeField]
-		public Vector3 _vector3Value;
+		private Vector3 _vector3Value;
 		public Vector3 Vector3Value {
 			get { return _vector3Value; }
 			set { _vector3Value = value; }
 		}
 
 		[SerializeField]
-		public Vector4 _vector4Value;
+		private Vector4 _vector4Value;
 		public Vector4 Vector4Value {
 			get { return _vector4Value; }
 			set { _vector4Value = value; }
 		}
 
 		[SerializeField]
-		public Quaternion _quaternionValue;
+		private Quaternion _quaternionValue;
 		public Quaternion QuaternionValue {
 			get { return _quaternionValue; }
 			set { _quaternionValue = value; }
 		}
 
 		[SerializeField]
-		public UnityEngine.Object _objectValue;
+		private UnityEngine.Object _objectValue;
 		public UnityEngine.Object ObjectValue {
 			get { return _objectValue; }
 			set { _objectValue = value; }

@@ -12,9 +12,9 @@
 ## Features
 
 - Unity's serialization system friendly (not using original serialization code). So this library can be used in scenes, AssetBundles, prefabs, etc.
-- a parameter can have references of objects which is located in the scene hierarchy, like usual MonoBehavior subclasses.
+- a parameter can have a reference of an object which is located in the scene hierarchy, like usual MonoBehavior subclasses.
 - parameters can be manipulated easily on Unity Editor GUI.
-- supports undo, copying component values.
+- supports undo, copying of component values.
 - small code base
 
 
@@ -39,34 +39,50 @@ tested with Unity 5.6.2p1/Mac OS X Sierra
 - An AnyParameterList instance can have an array of AnyParameter's. 
 - An AnyParameterList instance can have any set of multiple AnyParameter instances of any types.
 
+### AnyParameterList.AddParameter()
+
+add a new AnyParameter
+
+### AnyParameterList.DeleteParameter(param)
+
+delete the specified parameter
+
+### AnyParameterList.FindParameter(id)
+
+return the parameter of specified id, or return null if not found.
+If there is more than one parameters that match, the parameter which has the earliest index in the list will be returned.
+
 ## What is AnyParameter class
 
 - AnyParameter is also a component (MonoBehavior), but be used only inside AnyParameterList components. An AnyParameter instance have a value of any supported types.
 
-### AnyParameter.id
+### AnyParameter.Id
 
 id (name) of this parameter
 
-### AnyParameter.typeName
+### AnyParameter.TypeName
 
 name of currently having type
 
-### AnyParameter.boolValue, intValue, objectValue, ...
+### AnyParameter.BoolValue, IntValue, ObjectValue, ...
 
 the value of this parameter. You need to choose correct value property, depends on the type of the parameter.
 
 ## Drawbacks
 
-- It uses more storage spaces than ideal, because one AnyParameter instance actually have all of the values of supported native types, except inherited types from Object.
+- It uses more storage spaces than ideal, because one AnyParameter instance actually have all of the storage space of supported native types, except inherited types from Object.
 
 ## Currently supported value types
 
 - Boolean
-- Int (Int32)
+- Int (System.Int32)
+- Float (System.Single)
 - Double
 - String
 - Vector2
 - Vector3
+- Color
+- Rect
 - UnityEngine.Object
 - UnityEngine.GameObject
 - UnityEngine.Texture2D

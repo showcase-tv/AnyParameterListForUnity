@@ -6,11 +6,12 @@ using System;
 /*
  * To add a new value type:
  * 
- * 1. add an entry to TypeInfoTable
- * 2. If the type NOT inherited from Engine.Object:
- *   2.1. add a field of that type (not needed for types inherited Object class)
- *   2.2. add a copying value line to CloneToParent
- *   2.3. On AddParameterEditor class: add a new case to DrawValueField()
+ * 1. Add an entry to TypeInfoTable
+ * 2. If the type is NOT inherited from Engine.Object:
+ *   2.1. Add a field of that type (not needed for types inherited Object class)
+ *   2.2. Add a line about copying a value to CloneToParent
+ *   2.3. On AnyParameterEditor class: add a new case to DrawValueField()
+ *   2.4. Add an assertion on AnyParameterTest
  */
 
 namespace APL {
@@ -32,10 +33,13 @@ namespace APL {
 			{ "System.Int32", new TypeInfo("Int", typeof(System.Int32), null) },
 			{ "System.String", new TypeInfo("String", typeof(System.String), null) },
 			{ "System.Double", new TypeInfo("Double", typeof(System.Double), null) },
+			{ "System.Single", new TypeInfo("Float", typeof(System.Single), null) },
 			{ "UnityEngine.Vector2", new TypeInfo("Vector2", typeof(UnityEngine.Vector2), null) },
 			{ "UnityEngine.Vector3", new TypeInfo("Vector3", typeof(UnityEngine.Vector3), null) },
 			// not implemented: { "UnityEngine.Vector4", new TypeInfo("Vector4", typeof(UnityEngine.Vector4), null) },
 			// not implemented: { "UnityEngine.Quaternion", new TypeInfo("Quaternion", typeof(UnityEngine.Quaternion), null) },
+			{ "UnityEngine.Color", new TypeInfo("Color", typeof(UnityEngine.Color), null) },
+			{ "UnityEngine.Rect", new TypeInfo("Rect", typeof(UnityEngine.Rect), null) },
 			{ "UnityEngine.Object", new TypeInfo("UnityEngine.Object", typeof(UnityEngine.Object), null) },
 			{ "UnityEngine.GameObject", new TypeInfo("GameObject", typeof(UnityEngine.Object), typeof(UnityEngine.GameObject)) },
 			{ "UnityEngine.Texture2D", new TypeInfo("Texture2D", typeof(UnityEngine.Object), typeof(UnityEngine.Texture2D)) },
@@ -95,7 +99,10 @@ namespace APL {
 		private string _typeName;
 		public string TypeName {
 			get { return _typeName; }
-			set { _typeName = value; }
+			set {
+				_typeName = value;
+				CleanReferences ();
+			}
 		}
 
 		[SerializeField, TextArea(1,10)]
@@ -125,6 +132,13 @@ namespace APL {
 		public string StringValue {
 			get { return _stringValue; }
 			set { _stringValue = value; }
+		}
+
+		[SerializeField]
+		private float _floatValue;
+		public float FloatValue {
+			get { return _floatValue; }
+			set { _floatValue = value; }
 		}
 
 		[SerializeField]
@@ -160,6 +174,20 @@ namespace APL {
 		public Quaternion QuaternionValue {
 			get { return _quaternionValue; }
 			set { _quaternionValue = value; }
+		}
+
+		[SerializeField]
+		private Color _colorValue;
+		public Color ColorValue {
+			get { return _colorValue; }
+			set { _colorValue = value; }
+		}
+
+		[SerializeField]
+		private Rect _rectValue;
+		public Rect RectValue {
+			get { return _rectValue; }
+			set { _rectValue = value; }
 		}
 
 		[SerializeField]
@@ -201,11 +229,14 @@ namespace APL {
 			newParam.BoolValue = _boolValue;
 			newParam.IntValue = _intValue;
 			newParam.StringValue = _stringValue;
+			newParam.FloatValue = _floatValue;
 			newParam.DoubleValue = _doubleValue;
 			newParam.Vector2Value = _vector2Value;
 			newParam.Vector3Value = _vector3Value;
 			newParam.Vector4Value = _vector4Value;
 			newParam.QuaternionValue = _quaternionValue;
+			newParam.ColorValue = _colorValue;
+			newParam.RectValue = _rectValue;
 			newParam.ObjectValue = _objectValue;
 			return newParam;
 		}

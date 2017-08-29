@@ -37,6 +37,8 @@ public class AnyParameterTest {
 		Assert.AreEqual (param.IntValue, 5555);
 		param.DoubleValue = 123.45;
 		Assert.AreEqual (param.DoubleValue, 123.45);
+		param.FloatValue = 987.65f;
+		Assert.AreEqual (param.FloatValue, 987.65f);
 		param.StringValue = "HogeMoge";
 		Assert.AreEqual (param.StringValue, "HogeMoge");
 		param.Vector2Value = new Vector2 (1.1f, 2.2f);
@@ -47,7 +49,10 @@ public class AnyParameterTest {
 		Assert.AreEqual (param.Vector4Value, new Vector4 (1.1f, 2.2f, 3.3f, 4.4f));
 		param.QuaternionValue = new Quaternion (1.1f, 2.2f, 3.3f, 4.4f);
 		Assert.AreEqual (param.QuaternionValue, new Quaternion (1.1f, 2.2f, 3.3f, 4.4f));
-
+		param.ColorValue = new Color (0.1f, 0.2f, 0.3f, 0.4f);
+		Assert.AreEqual (param.ColorValue, new Color (0.1f, 0.2f, 0.3f, 0.4f));
+		param.RectValue = new Rect (10.0f, 20.0f, 30.0f, 40.0f);
+		Assert.AreEqual (param.RectValue, new Rect (10.0f, 20.0f, 30.0f, 40.0f));
 	}
 
 	[Test]
@@ -76,5 +81,17 @@ public class AnyParameterTest {
 		param.TypeName = "UnityEngine.Texture2D";
 		Assert.AreEqual (param.MajorType, typeof(UnityEngine.Object));
 		Assert.AreEqual (param.MinorType, typeof(UnityEngine.Texture2D));
+	}
+
+	[Test]
+	public void CleanReferenceTest() {
+		var obj = new GameObject ();
+		var param = CreatedParameter ("hoge");
+		param.TypeName = "UnityEngine.Object";
+		param.ObjectValue = obj;
+		Assert.AreSame (param.ObjectValue, obj);
+
+		param.TypeName = "System.String";
+		Assert.IsNull (param.ObjectValue);
 	}
 }

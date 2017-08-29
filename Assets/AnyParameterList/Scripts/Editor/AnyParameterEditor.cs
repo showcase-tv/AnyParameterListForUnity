@@ -87,6 +87,9 @@ public class AnyParameterEditor : Editor {
 		case "System.String":
 			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_stringValue"), label);
 			break;
+		case "System.Single":
+			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_floatValue"), label);
+			break;
 		case "System.Double":
 			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_doubleValue"), label);
 			break;
@@ -101,6 +104,12 @@ public class AnyParameterEditor : Editor {
 			break;
 		case "UnityEngine.Quaternion":
 			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_quaternionValue"), label);
+			break;
+		case "UnityEngine.Color":
+			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_colorValue"), label);
+			break;
+		case "UnityEngine.Rect":
+			EditorGUILayout.PropertyField (serializedObject.FindProperty ("_rectValue"), label);
 			break;
 		case "UnityEngine.Object":
 			GenericObjectField(_param);
